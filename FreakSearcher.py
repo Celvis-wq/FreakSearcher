@@ -2,6 +2,9 @@
 FreakSearcher.py - Made by: Celvis#5477
 -- Version: 0.0.1
 -- https://github.com/Celvis-wq/FreakSearcher
+
+TODO:
+-- Finish this program overall
 """
 
 # Import
