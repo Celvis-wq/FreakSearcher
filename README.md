@@ -5,12 +5,16 @@
 
 - This programs purpose is to scan a domain for subdomains, listing ports ranging from 80 - 443. This tool is for pentesting purposes.
 <br />
-- This program is not complete, please report any issues to Celvis#5477
+
+## FAQ:
+- Python3
+- Any Linux operating system (Ubuntu, Kali, Parrot, etc)
+- This program is not complete at the moment. I will continue to improve and add more to this program. Please report any issues to me @discord: Celvis#5477
 
 ### How to use:
-- This program is only for Linux operating systems at the moment, make sure you are using a Linux operating system such as Ubuntu.
-- Be on the latest version of python
-- Command: python3 freevbucks.py
+- python3 FreakSearcher.py
+- Enter the selected Domain
+- Wait for the magic to happen~
 
 # Languages used:
 - Python
