@@ -1,31 +1,39 @@
 """
 FreakSearcher.py - Made by: Celvis#5477
--- Version: 0.0.1
+-- Version: 0.0.2
 -- https://github.com/Celvis-wq/FreakSearcher
-
-TODO:
--- Finish this program overall
 """
 
 # Import
+import os
 import subprocess
 
 # Asks for domain name
-print("Welcome to FreakSearcher!\nVersion: 0.0.1\nMade By: Celvis#5477\n")
-domain = input("\nPlease enter the domain you wish to scan: ")
+domain = input("Welcome to FreakSearcher!\nVersion: 0.0.1\nMade By: Celvis#5477\nPlease enter the domain you wish to scan: ")
+
+# Create the directory if it does not exist
+if not os.path.exists("/data"):
+  os.makedirs("/data")
 
 # Find subdomains with amass
-amassOutput = subprocess.run(["docker", "run", "amass", "enum", "-d", domain], capture_output=True)
-subdomains = amassOutput.stdout.decode().strip().split("\n")
+amass_output = subprocess.run(["docker", "run", "amass", "enum", "-d", domain], capture_output=True)
+subdomains = amass_output.stdout.decode().strip().split("\n")
 
-# Nmap each subdomain for ports 80 and 443
-for subdomain in subdomains:
-  nmapOutput = subprocess.run(["nmap", "-p", "80,443", subdomain], capture_output=True)
+# Open files to write subdomain and http status code data to
+with open("/data/domain_PORT80.txt", "w") as port80file, open("/data/domain_PORT443.txt", "w") as port443file:
+  for subdomain in subdomains:
+    # Nmap the subdomain for ports 80 and 443
+    nmap_output = subprocess.run(["nmap", "-p", "80,443", subdomain], capture_output=True)
   
-  # Check if ports 80 and 443 are open
-  if "80/tcp open" in nmapOutput.stdout.decode() and "443/tcp open" in nmapOutput.stdout.decode():
-    # Curl the subdomain and print the HTTP status code
-    curl_output = subprocess.run(["curl", "-I", subdomain], capture_output=True)
-    print(f"{subdomain}: {curl_output.stdout.decode().split()[1]}")
+    # Check if port 80 is open and write the HTTP status code to the port 80 file
+    if "80/tcp open" in nmap_output.stdout.decode():
+      curl_output = subprocess.run(["curl", "-I", subdomain], capture_output=True)
+      port80file.write(f"{subdomain}: {curl_output.stdout.decode().split()[1]}\n")
     
-# To be completed
+    # Check if port 443 is open and write the HTTP status code to the port 443 file
+    if "443/tcp open" in nmap_output.stdout.decode():
+      curl_output = subprocess.run(["curl", "-I", subdomain], capture_output=True)
+      port443file.write(f"{subdomain}: {curl_output.stdout.decode().split()[1]}\n")
+      
+      # End
+      break
