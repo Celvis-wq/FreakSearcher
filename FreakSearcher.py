@@ -1,6 +1,6 @@
 """
 FreakSearcher.py - Made by: Celvis#5477
--- Version: 0.0.2
+-- Version: 0.0.3
 -- https://github.com/Celvis-wq/FreakSearcher
 """
 
@@ -16,24 +16,24 @@ if not os.path.exists("/data"):
   os.makedirs("/data")
 
 # Find subdomains with amass
-amass_output = subprocess.run(["docker", "run", "amass", "enum", "-d", domain], capture_output=True)
-subdomains = amass_output.stdout.decode().strip().split("\n")
+amassOutput = subprocess.run(["docker", "run", "amass", "enum", "-d", domain], capture_output=True)
+subdomains = amassOutput.stdout.decode().strip().split("\n")
 
 # Open files to write subdomain and http status code data to
 with open("/data/domain_PORT80.txt", "w") as port80file, open("/data/domain_PORT443.txt", "w") as port443file:
   for subdomain in subdomains:
     # Nmap the subdomain for ports 80 and 443
-    nmap_output = subprocess.run(["nmap", "-p", "80,443", subdomain], capture_output=True)
+    nmapOutput = subprocess.run(["nmap", "-p", "80,443", subdomain], capture_output=True)
   
     # Check if port 80 is open and write the HTTP status code to the port 80 file
-    if "80/tcp open" in nmap_output.stdout.decode():
+    if "80/tcp open" in nmapOutput.stdout.decode():
       curl_output = subprocess.run(["curl", "-I", subdomain], capture_output=True)
       port80file.write(f"{subdomain}: {curl_output.stdout.decode().split()[1]}\n")
     
     # Check if port 443 is open and write the HTTP status code to the port 443 file
-    if "443/tcp open" in nmap_output.stdout.decode():
+    if "443/tcp open" in nmapOutput.stdout.decode():
       curl_output = subprocess.run(["curl", "-I", subdomain], capture_output=True)
       port443file.write(f"{subdomain}: {curl_output.stdout.decode().split()[1]}\n")
-      
-      # End
-      break
+ 
+    # End
+    break
