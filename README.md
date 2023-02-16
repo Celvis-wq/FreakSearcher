@@ -9,6 +9,7 @@
 ## FAQ:
 - Python3
 - Any Linux operating system (Ubuntu, Kali, Parrot, etc)
+- Have amass installed to use
 - This program is not complete at the moment. I will continue to improve and add more to this program. Please report any issues to me @discord: Celvis#5477
 
 ### How to use:
