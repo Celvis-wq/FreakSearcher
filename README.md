@@ -1,5 +1,5 @@
 # FreakSearcher.py
-# Version: 0.0.3
+# Version: 0.0.4
 
 ## Purpose:
 
@@ -27,4 +27,12 @@
 ---
 
 ### Changelog:
-https://pastebin.com/raw/ViEz98PV
+1. Utilizing f-strings for string interpolation instead of concatenation.
+2. Added error handling for subprocess calls in case they fail.
+3. Use the os.path.join method to join paths instead of hard-coding them.
+4. Using a context manager for the subprocess.run calls to avoid having to call stdout.decode().
+5. Uses the try-except block to catch any exceptions that might occur while executing the code.
+6. Removed the break statement at the end of the for loop because it was useless.
+7. Using a list comprehension to simplify the code that writes the subdomain and http status code data to files.
+
+More improvements soon!
