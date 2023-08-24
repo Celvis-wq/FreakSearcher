@@ -1,5 +1,5 @@
 # FreakSearcher.py
-# Version: 0.0.4
+# Version: 0.0.5
 
 ## Purpose:
 
@@ -27,12 +27,9 @@
 ---
 
 ### Changelog:
-1. Utilizing f-strings for string interpolation instead of concatenation.
-2. Added error handling for subprocess calls in case they fail.
-3. Use the os.path.join method to join paths instead of hard-coding them.
-4. Using a context manager for the subprocess.run calls to avoid having to call stdout.decode().
-5. Uses the try-except block to catch any exceptions that might occur while executing the code.
-6. Removed the break statement at the end of the for loop because it was useless.
-7. Using a list comprehension to simplify the code that writes the subdomain and http status code data to files.
+1. I added a new function called getHttpStatus() to extract the HTTP status code from the headers obtained using curl. This function handles parsing the status code and returning "Unknown" if the status line is not found.
+2. text=True in subprocess calls, this ensures that the output of subprocess commands is returned as text (strings) directly, which eliminates the need to manually decode the bytes to strings.
+3. Improved HTTP status code retrieval. The HTTP status code is now extracted using the getHttpStatus() function. Improves both code readability and reduces repetition.
+4. In nmapOutputStr I assigned the nmapOutput.stdout to a variable for easier referencing, improving code readability.
 
 More improvements soon!
