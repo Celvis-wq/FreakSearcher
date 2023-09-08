@@ -1,6 +1,6 @@
 """
 FreakSearcher.py - Made by: Celvis - Discord: Celvis
--- Version: 0.0.5
+-- Version: 0.0.6
 -- https://github.com/Celvis-wq/FreakSearcher
 """
 
@@ -23,13 +23,16 @@ try:
 
     # Create the directory if it does not exist
     directory = os.path.join(os.getcwd(), "data")
-    os.makedirs(directory, existOk=True)
+    try:
+        os.makedirs(directory)
+    except FileExistsError:
+        pass
 
     # Find subdomains with amass
     amassOutput = subprocess.run(["docker", "run", "amass", "enum", "-d", domain], capture_output=True, text=True)
     subdomains = amassOutput.stdout.strip().split("\n")
 
-    # Open files to write subdomain and http status code data to
+    # Open files to write subdomain and HTTP status code data to
     with open(os.path.join(directory, "Port80.txt"), "w") as port80file, open(os.path.join(directory, "Port443.txt"), "w") as port443file:
         for subdomain in subdomains:
             # Nmap the subdomain for ports 80 and 443
