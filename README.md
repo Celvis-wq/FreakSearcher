@@ -1,5 +1,5 @@
 # FreakSearcher.py
-# Version: 0.0.5
+# Version: 0.0.6
 
 ## Purpose:
 
@@ -27,9 +27,7 @@
 ---
 
 ### Changelog:
-1. I added a new function called getHttpStatus() to extract the HTTP status code from the headers obtained using curl. This function handles parsing the status code and returning "Unknown" if the status line is not found.
-2. text=True in subprocess calls, this ensures that the output of subprocess commands is returned as text (strings) directly, which eliminates the need to manually decode the bytes to strings.
-3. Improved HTTP status code retrieval. The HTTP status code is now extracted using the getHttpStatus() function. Improves both code readability and reduces repetition.
-4. In nmapOutputStr I assigned the nmapOutput.stdout to a variable for easier referencing, improving code readability.
+1. I have implimented a directory creation fix, many of you may have experienced the error message: An error occurred: makedirs() got an unexpected keyword argument 'existOk'. You shouldn't have this issue now. I had a logic error using the os.makedirs function with an incorrect argument 'existOk=True' which doesn't work, I ended up replacing it with a try-except block to create the directory if it doesn't exist.
+2.  I made a more robust error handling using a try-except block to catch and display any exceptions that may occur during the execution of the program.
 
 More improvements soon!
