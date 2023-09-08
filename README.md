@@ -30,4 +30,6 @@
 1. I have implimented a directory creation fix, many of you may have experienced the error message: An error occurred: makedirs() got an unexpected keyword argument 'existOk'. You shouldn't have this issue now. I had a logic error using the os.makedirs function with an incorrect argument 'existOk=True' which doesn't work, I ended up replacing it with a try-except block to create the directory if it doesn't exist.
 2.  I made a more robust error handling using a try-except block to catch and display any exceptions that may occur during the execution of the program.
 
+Please report any further issues to me immediately! Discord: Celvis
+
 More improvements soon!
