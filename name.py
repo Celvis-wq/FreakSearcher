@@ -1,2 +1,4 @@
 # Ignore
-print("Test")
+test input = userInput("test")
+
+print(test)
