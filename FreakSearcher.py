@@ -6,10 +6,11 @@ FreakSearcher.py - Made by: Celvis - Discord: Celvis
 -- bug fixes soon
 """
 
-# Import
 import os
 import requests
+import nmap
 import subprocess
+import traceback
 
 # Function to fetch the headers of an HTTP response from a given subdomain
 def getHttpStatus(subdomain):
@@ -70,3 +71,4 @@ try:
 
 except Exception as e:
     print(f"An error occurred: {e}")
+    traceback.print_exc() 
