@@ -29,9 +29,10 @@
 1. Updated getHttpStatus function. It now uses the requests library for HTTP status checks with added exception handling.
 2. Added checkRequiredTools function to verify the existence of required external tools (docker, nmap) before running the script.
 3. Now has Nmap Integration. Replaces subprocess calls with the python-nmap library for scanning ports.
-4. Improved general error handling added to capture any exceptions during execution, previous error handling had some issues.
+4. Updated the exception handling block to include traceback.print_exc(), which will print the complete traceback when an error occurs. This should help in diagnosing the cause of any exceptions more effectively.
 5. Updated welcome message.
 6. Fixed minor bugs.
+7. Added import traceback.
 
 Please report any further issues to me immediately! Discord: Celvis
 
