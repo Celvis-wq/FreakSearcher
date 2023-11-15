@@ -2,8 +2,6 @@
 FreakSearcher.py - Made by: Celvis - Discord: Celvis
 -- Version: 0.0.7
 -- https://github.com/Celvis-wq/FreakSearcher
-
--- bug fixes soon
 """
 
 # Import
