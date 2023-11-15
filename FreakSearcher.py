@@ -2,12 +2,13 @@
 FreakSearcher.py - Made by: Celvis - Discord: Celvis
 -- Version: 0.0.7
 -- https://github.com/Celvis-wq/FreakSearcher
+
+-- bug fixes soon
 """
 
 # Import
 import os
 import requests
-import nmap
 import subprocess
 
 # Function to fetch the headers of an HTTP response from a given subdomain
@@ -35,7 +36,7 @@ try:
     checkRequiredTools()
 
     # Asks for domain name
-    domain = input("Welcome to FreakSearcher! | Version: 0.0.7 | Made By: Celvis | Discord: Celvis\n\nPlease enter the domain you wish to scan: ")
+    domain = input("Welcome to FreakSearcher!\nVersion: 0.0.7\nMade By: Celvis\nDiscord: Celvis\nPlease enter the domain you wish to scan: ")
 
     # Create the directory if it does not exist
     directory = os.path.join(os.getcwd(), "data")
