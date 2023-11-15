@@ -1,5 +1,5 @@
 # FreakSearcher.py
-# Version: 0.0.6
+# Version: 0.0.7
 
 ## Purpose:
 
@@ -7,10 +7,9 @@
 <br />
 
 ## FAQ:
-- Python3
+- Python3 - Install Packages: requests, python-nmap
 - Any Linux operating system (Ubuntu, Kali, Parrot, etc)
-- Have amass installed to use
-- This program is not complete at the moment. I will continue to improve and add more to this program. Please report any issues to me @discord: Celvis#5477
+- Have the following installed: amass, docker, nmap
 
 ### How to use:
 - python3 FreakSearcher.py
@@ -27,8 +26,12 @@
 ---
 
 ### Changelog:
-1. I have implimented a directory creation fix, many of you may have experienced the error message: An error occurred: makedirs() got an unexpected keyword argument 'existOk'. You shouldn't have this issue now. I had a logic error using the os.makedirs function with an incorrect argument 'existOk=True' which doesn't work, I ended up replacing it with a try-except block to create the directory if it doesn't exist.
-2.  I made a more robust error handling using a try-except block to catch and display any exceptions that may occur during the execution of the program.
+1. Updated getHttpStatus function. It now uses the requests library for HTTP status checks with added exception handling.
+2. Added checkRequiredTools function to verify the existence of required external tools (docker, nmap) before running the script.
+3. Now has Nmap Integration. Replaces subprocess calls with the python-nmap library for scanning ports.
+4. Improved general error handling added to capture any exceptions during execution, previous error handling had some issues.
+5. Updated welcome message.
+6. Fixed minor bugs.
 
 Please report any further issues to me immediately! Discord: Celvis
 
