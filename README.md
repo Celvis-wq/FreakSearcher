@@ -1,5 +1,6 @@
 # FreakSearcher.py
 # Version: 0.0.7
+- By: Celvis
 
 ## Purpose:
 
