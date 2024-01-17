@@ -26,7 +26,8 @@
 
 ---
 
-### Changelog:
+### Changelog/TODO:
+Changes:
 1. Updated getHttpStatus function. It now uses the requests library for HTTP status checks with added exception handling.
 2. Added checkRequiredTools function to verify the existence of required external tools (docker, nmap) before running the script.
 3. Now has Nmap Integration. Replaces subprocess calls with the python-nmap library for scanning ports.
@@ -37,6 +38,9 @@
 8. Added filtering empty subdomains. Modified the subdomains list comprehension to filter out empty strings, ensuring only valid subdomains are processed.
 9. Added a print statement to show which subdomain is currently being scanned. This just helps in debugging and tracking the script's progress.
 10. Added check subdomain in scan results. Before attempting to access scan data, the script now checks if the subdomain is present in nmScanner.all_hosts(). If not, it prints a message and continues to the next subdomain.
+
+TODO:
+1. Nothing at this current time.
 
 Please report any further issues to me immediately! Discord: Celvis
 
